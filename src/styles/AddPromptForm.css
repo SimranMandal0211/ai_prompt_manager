@@ -1,0 +1,143 @@
+.form {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  font-size: 14px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #111;
+}
+
+.textarea {
+  width: 100%;
+  font-size: 14px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  border-color: #111;
+}
+
+.tagRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tagRow input {
+  flex: 1;
+}
+
+.tagsPreview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  min-height: 24px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.tagRemove {
+  cursor: pointer;
+  opacity: 0.6;
+  font-size: 10px;
+}
+
+.tagRemove:hover {
+  opacity: 1;
+}
+
+.formActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.primaryBtn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.primaryBtn:hover {
+  opacity: 0.85;
+}
+
+.ghostBtn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.ghostBtn:hover {
+  background: #f5f5f5;
+}
+
+.tagWriting    { background: #EEEDFE; color: #3C3489; }
+.tagCoding     { background: #E1F5EE; color: #085041; }
+.tagAnalysis   { background: #FAEEDA; color: #633806; }
+.tagCreative   { background: #FBEAF0; color: #72243E; }
+.tagProductivity { background: #EAF3DE; color: #27500A; }
+.tagOther      { background: #f1f1f1; color: #555; }
