@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleFav, deletePrompt } from '../store/promptsSlice';
 import '../styles/PromptCard.css';
-import { FaHeart, FaTrash , FaCheck, FaCopy } from 'react-icons/fa';
+import { FaHeart, FaRegHeart , FaTrash , FaCheck, FaCopy } from 'react-icons/fa';
 
 function getTagClass(tag){
     const map = {
@@ -54,10 +54,10 @@ export default function PromptCard({prompt}){
                 <div className="cardActions">
                     <button
                         onClick={() => dispatch(toggleFav(prompt.id))}
-                        className={`iconBtn ${prompt.favorite ? 'iconBtnActive' : ''}`}
+                        className={`iconBtn ${prompt.fav ? 'iconBtnActive' : ''}`}
                         title="Favourite"
                     >
-                        <FaHeart />
+                        {prompt.fav ? <FaHeart /> : <FaRegHeart />}
                     </button>
 
                     <button

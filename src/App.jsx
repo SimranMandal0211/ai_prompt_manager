@@ -4,6 +4,7 @@ import { selectAllPrompts, selectFavoritePrompts, selectUniqueTags, selectFilter
 import AddPromptForm from './components/AddPromptForm';
 import FilterBar from './components/FilterBar';
 import PromptCard from './components/PromptCard';
+import useTheme from './hooks/useTheme';
 
 import'./App.css';
 
@@ -20,6 +21,9 @@ export default function App(){
     useMemo(() => state => selectFilteredPrompts(state, filters), [filters])
   );
 
+  const { theme, toggleTheme } = useTheme();
+
+
   return (
     <div className='container'>
       {/* Header */}
@@ -28,10 +32,17 @@ export default function App(){
            <h1 className='headerTitle'>Prompt Manager</h1>
            <p className='headerSubtitle'>Powered by Redux Toolkit</p>
         </div>
-        <button className='primaryBtn'
-          onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Cancel' : 'Add Prompt'}
-        </button>
+
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button className="ghostBtn" onClick={toggleTheme}>
+            {theme === 'light' ? 'Dark' : 'Light'}
+          </button>
+          <button className='primaryBtn'
+            onClick={() => setShowForm(!showForm)}>
+            {showForm ? 'Cancel' : 'Add Prompt'}
+          </button>
+        </div>
+        
       </div>
 
 
