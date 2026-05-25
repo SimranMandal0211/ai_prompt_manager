@@ -32,11 +32,20 @@ export const { addPrompt, toggleFav, deletePrompt } = promptsSlice.actions;
 
 // Selectors
 export const selectAllPrompts = state => state.prompts.items;
-export const selectFavoritePrompts = state => state.prompts.items.filter(p => p.fav);
+
+
+export const selectFavoritePrompts = createSelector(
+    selectAllPrompts, 
+    (items) => items.filter(p => p.fav)
+);
+
+
 export const selectUniqueTags = createSelector(
     selectAllPrompts,
     items => [...new Set(items.flatMap(p => p.tags))]
 );
+
+
 export const selectFilteredPrompts = createSelector(selectAllPrompts,
     (_, filters) => filters,
     (items, { search, tag, model, sort }) => {

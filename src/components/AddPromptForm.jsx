@@ -7,13 +7,13 @@ const MODELS = ['Claude Sonnet', 'GPT-4', 'Claude Opus', 'GPT-4o', 'Llama 3', 'G
 
 function getTagClass(tag){
     const map = {
-        writing: tagWriting,
-        coding: tagCoding,
-        productivity: tagProductivity,
-        creative: tagCreative,
-        analysis: tagAnalysis
+        writing: 'tagWriting',
+        coding: 'tagCoding',
+        productivity: 'tagProductivity',
+        creative: 'tagCreative',
+        analysis: 'tagAnalysis'
     }
-    return map[tag.toLowerCase()] || tagOther
+    return map[tag.toLowerCase()] || 'tagOther'
 }
 
 export default function AddPromptForm({onClose}){
@@ -71,18 +71,20 @@ export default function AddPromptForm({onClose}){
 
             <div className='formGroup'>
                 <label className='label'>Prompt text</label>
-                <textarea className='input' placeholder="Write your prompt here..." value={prompt} onChange={(e) => setPrompt(e.target.value)}></textarea>
+                <textarea className='input'
+                    style={{maxWidth: '100%', resize: 'vertical'}}
+                    placeholder="Write your prompt here..." value={prompt} onChange={(e) => setPrompt(e.target.value)}></textarea>
             </div>
 
             <div className='tagRow'>
                 <label className='label'>Add Tag</label>
                 <input className='input' placeholder="Add a tag and press Enter..." value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyPress={(e) => e.key === 'Enter' && handleAddTag()} />
-                <button className='secondaryBtn' onClick={handleAddTag}>Add</button>
+                <button className='ghostBtn' onClick={handleAddTag}>Add</button>
             </div>
 
             <div className="tagsPreview">
                 {tags.map(tag => (
-                    <span key={tag} className={`${styles.tag} ${getTagClass(tag)}`}>
+                    <span key={tag} className={`tag ${getTagClass(tag)}`}>
                         {tag}
                         <span className='tagRemove' onClick={() => handleRemoveTag(tag)}>
                             X

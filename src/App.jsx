@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPrompts, selectFavoritePrompts, selectUniqueTags, selectFilteredPrompts } from './store/promptsSlice';
 import AddPromptForm from './components/AddPromptForm';
 import FilterBar from './components/FilterBar';
+import PromptCard from './components/PromptCard';
 
 import'./App.css';
 
@@ -14,8 +15,11 @@ export default function App(){
   const allPrompts = useSelector(selectAllPrompts);
   const favoritePrompts = useSelector(selectFavoritePrompts);
   const uniqueTags = useSelector(selectUniqueTags);
-  const filteredPrompts = useSelector(state => selectFilteredPrompts(state, filters));
-  
+
+  const filteredPrompts = useSelector(
+    useMemo(() => state => selectFilteredPrompts(state, filters), [filters])
+  );
+
   return (
     <div className='container'>
       {/* Header */}
@@ -52,6 +56,10 @@ export default function App(){
       <FilterBar filters={filters} setFilter={setFilters} uniqueTags={uniqueTags} />
 
       {/* Prompt List */}
+      {filteredPrompts.length === 0 ? 
+        <div style={{ textAlign: 'center', padding: '2.5rem', color: '#aaa' }}>No prompts found.</div> :
+        filteredPrompts.map(p => <PromptCard key={p.id} prompt={p} />)
+  }
     </div>
   )
 }
