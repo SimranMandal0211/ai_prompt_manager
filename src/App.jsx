@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { selectAllPrompts, selectFavoritePrompts, selectUniqueTags, selectFilteredPrompts } from './store/promptsSlice';
 import AddPromptForm from './components/AddPromptForm';
 
 import'./App.css';
@@ -7,8 +8,13 @@ import'./App.css';
 
 export default function App(){
   const [showForm, setShowForm ] = useState(false);
-  const [filters, setFilters] = useState({serch: '', tag: '', model: '', sort: 'newest' })
+  const [filters, setFilters] = useState({search: '', tag: '', model: '', sort: 'newest' })
 
+  const allPrompts = useSelector(selectAllPrompts);
+  const favoritePrompts = useSelector(selectFavoritePrompts);
+  const uniqueTags = useSelector(selectUniqueTags);
+  const filteredPrompts = useSelector(state => selectFilteredPrompts(state, filters));
+  
   return (
     <div className='container'>
       {/* Header */}
@@ -27,9 +33,9 @@ export default function App(){
       {/* Stats */}
       <div className='stats'>
         {[
-          { label: 'Total prompts', value: 'allPrompts' },
-          { label: 'Favourites', value: 'favoriteCount' },
-          { label: 'Unique tags', value: 'uniqueTags' }
+          { label: 'Total prompts', value: allPrompts.length },
+          { label: 'Favourites', value: favoritePrompts.length },
+          { label: 'Unique tags', value: uniqueTags.length }
         ].map(s => (
           <div key={s.label}className='statCard'>
             <div className='statValue'>{s.value}</div>

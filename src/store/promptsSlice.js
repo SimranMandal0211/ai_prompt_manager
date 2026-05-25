@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { initialPrompts } from '../data/initialData';
 
 const promptsSlice = createSlice({
@@ -28,5 +28,30 @@ const promptsSlice = createSlice({
     }
 })
 
-export const { addPrompt, toggleFav, deletePrompt} = promptsSlice.actions;
+export const { addPrompt, toggleFav, deletePrompt } = promptsSlice.actions;
+
+// Selectors
+export const selectAllPrompts = state => state.prompts.items;
+export const selectFavoritePrompts = state => state.prompts.items.filter(p => p.fav);
+export const selectUniqueTags = createSelector(
+    selectAllPrompts,
+    items => [...new Set(items.flatMap(p => p.tags))]
+);
+export const selectFilteredPrompts = createSelector(selectAllPrompts,
+    (_, filters) => filters,
+    (items, { search, tag, model, sort }) => {
+        let result = [...items];
+        if(search) result = result.filter(p => 
+            p.title.toLowerCase().includes(search.toLowerCase()) ||
+            p.prompt.toLowerCase().includes(search.toLowerCase())
+        )
+        if(tag) result = result.filter(p => p.tags.includes(tag));
+        if(model) result = result.filter(p => p.model === model);
+        if(sort === 'newest') result.sort((a,b) => b.createdAt - a.createdAt);
+        else if(sort === 'oldest') result.sort((a,b) => a.createdAt - b.createdAt);
+        else if(sort === 'fav') result.sort((a,b) => b.fav - a.fav);
+        return result;
+    }
+)
+
 export default promptsSlice.reducer;
