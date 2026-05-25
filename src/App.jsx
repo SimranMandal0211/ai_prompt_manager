@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPrompts, selectFavoritePrompts, selectUniqueTags, selectFilteredPrompts } from './store/promptsSlice';
 import AddPromptForm from './components/AddPromptForm';
+import FilterBar from './components/FilterBar';
 
 import'./App.css';
 
@@ -48,6 +49,7 @@ export default function App(){
       {showForm && <AddPromptForm onClose={() => setShowForm(false)}/>}
 
       {/* Filters */}
+      <FilterBar filters={filters} setFilter={setFilters} uniqueTags={uniqueTags} />
 
       {/* Prompt List */}
     </div>

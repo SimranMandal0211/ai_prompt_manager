@@ -1,0 +1,41 @@
+.filterBar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 160px;
+  font-size: 14px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.searchInput:focus {
+  border-color: #111;
+}
+
+.select {
+  font-size: 14px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  font-family: inherit;
+  min-width: 110px;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #111;
+}
