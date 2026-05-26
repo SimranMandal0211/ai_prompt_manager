@@ -47,7 +47,9 @@ export default function PromptCard({prompt}){
             <div className="cardFooter">
                 <div className="cardTags">
                     {prompt.tags.map(tag => (
-                        <span key={tag} className={`${tag} ${getTagClass(tag)}`}>{tag}</span>
+                        <span key={tag} className={`${tag} ${getTagClass(tag)}`} style={{padding: '2px 5px', borderRadius: '5px'}}>
+                            {tag}
+                        </span>
                     ))}
                 </div>
 

@@ -31,8 +31,8 @@
 
 .cardModel {
   font-size: 11px;
-  background: #f1f1f1;
-  color: #555;
+  background: var(--color-stat-bg);   
+  color: var(--color-text-secondary); 
   padding: 2px 8px;
   border-radius: 20px;
   white-space: nowrap;
@@ -65,16 +65,29 @@
   display: inline-flex;
   align-items: center;
   font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 20px;
+  padding: 4px 12px;        
+  border-radius: 20px;     
+  font-weight: 500;         
+  letter-spacing: 0.2px;
 }
-
-.tagWriting     { background: #EEEDFE; color: #3C3489; }
-.tagCoding      { background: #E1F5EE; color: #085041; }
-.tagAnalysis    { background: #FAEEDA; color: #633806; }
-.tagCreative    { background: #FBEAF0; color: #72243E; }
+/* for light theme */
+.tagWriting      { background: #EEEDFE; color: #3C3489; }
+.tagCoding       { background: #E1F5EE; color: #085041; }
+.tagAnalysis     { background: #FAEEDA; color: #633806; }
+.tagCreative     { background: #FBEAF0; color: #72243E; }
 .tagProductivity { background: #EAF3DE; color: #27500A; }
-.tagOther       { background: #f1f1f1; color: #555; }
+.tagOther        { background: #f1f1f1; color: #555555; }
+
+/* for dark theme */
+[data-theme='dark'] .tagWriting      { background: #2D2B5E; color: #B8B0FF; }
+[data-theme='dark'] .tagCoding       { background: #1A3D30; color: #6FCCA8; }
+[data-theme='dark'] .tagAnalysis     { background: #3D2E10; color: #FFBE7A; }
+[data-theme='dark'] .tagCreative     { background: #3D1525; color: #FF9ABD; }
+[data-theme='dark'] .tagProductivity { background: #1E3510; color: #9FD56A; }
+[data-theme='dark'] .tagOther        { background: #2a2a2a; color: #aaaaaa; }
+
+
+[data-theme='dark'] .tagOther        { background: var(--color-stat-bg); color: var(--color-text-secondary); }
 
 .cardActions {
   display: flex;

@@ -77,13 +77,13 @@ body {
 
 .statLabel {
   font-size: 12px;
-  color: #888;
+  color: var(--color-text-secondary);
   margin-top: 2px;
 }
 
 .primaryBtn {
-  background: #111;
-  color: #fff;
+  background: var(--color-text);
+  color: var(--color-bg);
   border: none;
   padding: 8px 16px;
   border-radius: 8px;
@@ -99,4 +99,19 @@ body {
   text-align: center;
   padding: 2.5rem;
   color: #aaa;
+}
+
+.ghostBtn {
+  background: transparent;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ghostBtn:hover {
+  background: var(--color-stat-bg);
 }

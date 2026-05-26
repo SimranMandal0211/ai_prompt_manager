@@ -108,13 +108,14 @@
 }
 
 .primaryBtn {
-  background: #111;
-  color: #fff;
+  background: var(--color-text);
+  color: var(--color-bg);
   border: none;
   padding: 7px 16px;
   border-radius: 8px;
   font-size: 13px;
   cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .primaryBtn:hover {
@@ -123,21 +124,38 @@
 
 .ghostBtn {
   background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
   padding: 7px 16px;
   border-radius: 8px;
   font-size: 13px;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
 .ghostBtn:hover {
-  background: #f5f5f5;
+  background: var(--color-stat-bg);
 }
 
-.tagWriting    { background: #EEEDFE; color: #3C3489; }
-.tagCoding     { background: #E1F5EE; color: #085041; }
-.tagAnalysis   { background: #FAEEDA; color: #633806; }
-.tagCreative   { background: #FBEAF0; color: #72243E; }
+/* for light theme */
+.tagWriting      { background: #EEEDFE; color: #3C3489; }
+.tagCoding       { background: #E1F5EE; color: #085041; }
+.tagAnalysis     { background: #FAEEDA; color: #633806; }
+.tagCreative     { background: #FBEAF0; color: #72243E; }
 .tagProductivity { background: #EAF3DE; color: #27500A; }
-.tagOther      { background: #f1f1f1; color: #555; }
+.tagOther        { background: #f1f1f1; color: #555555; }
+
+
+/* for dark theme */
+[data-theme='dark'] .tagWriting      { background: #2D2B5E; color: #B8B0FF; }
+[data-theme='dark'] .tagCoding       { background: #1A3D30; color: #6FCCA8; }
+[data-theme='dark'] .tagAnalysis     { background: #3D2E10; color: #FFBE7A; }
+[data-theme='dark'] .tagCreative     { background: #3D1525; color: #FF9ABD; }
+[data-theme='dark'] .tagProductivity { background: #1E3510; color: #9FD56A; }
+[data-theme='dark'] .tagOther        { background: #2a2a2a; color: #aaaaaa; }
+
+ 
+.input, .textarea, .select {
+  background: var(--color-input-bg);  /* ✅ instead of #ffffff */
+  color: var(--color-text);
+}
