@@ -98,7 +98,7 @@ body {
 .empty {
   text-align: center;
   padding: 2.5rem;
-  color: #aaa;
+  color: var(--color-text-secondary);
 }
 
 .ghostBtn {

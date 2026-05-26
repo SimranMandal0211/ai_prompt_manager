@@ -15,7 +15,7 @@ function getTagClass(tag){
   return map[tag.toLowerCase()] || 'tagOther'
 }
 
-export default function PromptCard({prompt}){
+export default function PromptCard({prompt, index}){
     const dispatch = useDispatch();
     const [copied, setCopied] = useState(false);
 
@@ -32,7 +32,7 @@ export default function PromptCard({prompt}){
     }
 
     return (
-        <div className={`card ${prompt.favorite ? 'cardFavorited' : ''}`}>
+        <div className={`card ${prompt.fav ? 'cardFavorited' : ''} ${index % 2 !== 0 ? 'cardAlternate' : ''}`}>
 
             {/* Heading */}
             <div className="cardHeader">

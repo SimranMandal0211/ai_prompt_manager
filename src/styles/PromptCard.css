@@ -117,3 +117,7 @@
 .copied {
   color: green;
 }
+
+.cardAlternate {
+  border-left: 2px solid #D4537E;
+}

@@ -69,8 +69,8 @@ export default function App(){
       {/* Prompt List */}
       {filteredPrompts.length === 0 ? 
         <div style={{ textAlign: 'center', padding: '2.5rem', color: '#aaa' }}>No prompts found.</div> :
-        filteredPrompts.map(p => <PromptCard key={p.id} prompt={p} />)
-  }
+        filteredPrompts.map((p, index) => (<PromptCard key={p.id} prompt={p} index={index}/>))
+      }
     </div>
   )
 }
